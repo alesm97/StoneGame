@@ -189,6 +189,7 @@ GameObject:
   - component: {fileID: 1208215551}
   - component: {fileID: 1208215550}
   - component: {fileID: 1208215549}
+  - component: {fileID: 1208215553}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -227,8 +228,8 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  far clip plane: 200
+  field of view: 25
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -252,9 +253,35 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1208215548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 1, z: -120}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1208215553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1208215548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 209f12badff42f046b3880f414977f8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stones:
+  - {fileID: 1792318511720890, guid: 2bd0f4a936a197044b49f3635f79f397, type: 2}
+  - {fileID: 1792318511720890, guid: 558612c32c47357448b2c46b444f15dd, type: 2}
+  - {fileID: 1792318511720890, guid: fe796a3d60f5110498968d883c5e6f8f, type: 2}
+  torque: 5
+  minAntiGravity: 20
+  maxAntiGavity: 40
+  minLateralForce: -15
+  maxLateralForce: 15
+  minTimeBetweenStones: 1
+  maxTimeBetweenStones: 3
+  minX: -30
+  maxX: 30
+  minZ: -5
+  maxZ: 5
