@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainLoop : MonoBehaviour {
 
@@ -12,6 +13,7 @@ public class MainLoop : MonoBehaviour {
     public float minTimeBetweenStones = 1f, maxTimeBetweenStones = 3f;
     public float minX = -30f, maxX = 30f;
     public float minZ = -5f, maxZ = 5f;
+    public int amountStones = 20;
 
     private bool enableStones = true;
     private Rigidbody rigidbody;
@@ -29,7 +31,7 @@ public class MainLoop : MonoBehaviour {
     private IEnumerator ThrowStones()
     {
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3.0f);
 
         while (enableStones)
         {
@@ -46,8 +48,20 @@ public class MainLoop : MonoBehaviour {
             rigidbody.AddForce(Vector3.up * UnityEngine.Random.Range(minAntiGravity, maxAntiGavity), ForceMode.Impulse);
             rigidbody.AddForce(Vector3.right * UnityEngine.Random.Range(minLateralForce, maxLateralForce), ForceMode.Impulse);
 
-            yield return new WaitForSeconds(UnityEngine.Random.Range(minTimeBetweenStones, maxTimeBetweenStones));
+            GameManager.stonesThrown++;
+            if(GameManager.stonesThrown == amountStones)
+            {
+                enableStones = false;
+                yield return new WaitForSeconds(6.0f);
+            }
+            else
+            {
+                yield return new WaitForSeconds(UnityEngine.Random.Range(minTimeBetweenStones, maxTimeBetweenStones));
+            }
+            
         }
+
+        SceneManager.LoadScene("Final");
         
     }
 }
